@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+
+@layer base {
+	svg {
+		max-width: 100%;
+	}
+
+	.font-lato {
+		font-family: 'Lato', sans-serif;
+	}
+
+	.font-audiowide {
+		font-family: 'Audiowide', sans-serif;
+	}
+}
+
+@layer utilities {
+	.container {
+		@apply px-5;
+	}
+}
