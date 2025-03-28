@@ -1,15 +1,17 @@
+<!-- languageswitcher.ts -->
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { locale, locales } from '$lib/i18n';
+	import type { ELocales } from '$lib/translations/languages';
 
-	let isOpenlanguageMenu = writable(false);
+	let isOpenlanguageMenu = $state(false);
 	let languageMenu: HTMLElement;
-
+	
 	onMount(() => {
 		const closeList = (event: MouseEvent) => {
 			if (languageMenu && !languageMenu.contains(event.target as Node)) {
-				isOpenlanguageMenu.set(false);
+				isOpenlanguageMenu = false;
 			}
 		};
 		document.addEventListener('click', closeList);
@@ -20,34 +22,33 @@
 	});
 
 	function togglelanguageMenu() {
-		isOpenlanguageMenu.update((value) => !value);
+		isOpenlanguageMenu = !isOpenlanguageMenu;
 	}
 
 	function setLocale(newLocale: string) {
-		locale.set(newLocale);
-		isOpenlanguageMenu.set(false);
+		locale.set(newLocale as ELocales);
+		isOpenlanguageMenu = false;
 	}
 
-	$: currentLocale = $locale;
 </script>
 
-<div class="language-menu relative font-audiowide" bind:this={languageMenu}>
+<div class="language-menu font-audiowide relative" bind:this={languageMenu}>
 	<button
-		on:click={togglelanguageMenu}
-		style="visibility: {$isOpenlanguageMenu ? 'hidden' : 'visible'}"
+		onclick={togglelanguageMenu}
+		style="visibility: {isOpenlanguageMenu ? 'hidden' : 'visible'}"
 		class="language-menu-button px-4 py-1.5 text-2xl underline"
 	>
-		{currentLocale}
+		{$locale}
 	</button>
 
-	{#if $isOpenlanguageMenu}
+	{#if isOpenlanguageMenu}
 		<ul class="language-dropdown text-main-button border px-4 py-1">
 			{#each locales as language}
 				<li>
 					<button
 						type="button"
 						class="text-main-button text-2xl underline"
-						on:click={() => setLocale(language)}>{language}</button
+						onclick={() => setLocale(language)}>{language}</button
 					>
 				</li>
 			{/each}

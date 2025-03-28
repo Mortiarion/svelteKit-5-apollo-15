@@ -1,8 +1,9 @@
 <script lang="ts">
-	import LogoIcons from '$lib/icons/LogoIcons.svelte';
 	import { onMount } from 'svelte';
 	import { fade, slide } from 'svelte/transition';
+
 	import LanguageSwitcher from './LanguageSwitcher.svelte';
+	import Logo from './Logo.svelte';
 
 	let isBurger = $state(false);
 
@@ -12,17 +13,16 @@
 
     onMount(() => {
         if(window.innerWidth >= 768) {
-            isBurger = !isBurger;
+            isBurger = true;
         }
     })
 </script>
 
-<div class="py-5 md:flex">
+<div class="py-5 md:flex md:justify-between md:items-center">
     <div>
-        <LogoIcons />
+        <Logo />
     </div>
     
-    <LanguageSwitcher />
     
     <button
         class="absolute top-5 right-5 flex min-w-6 flex-col gap-1 md:hidden"
@@ -38,7 +38,7 @@
     {#if isBurger}
         <div transition:slide>
             <div transition:fade>
-                <ul class="absolute md:static">
+                <ul class="absolute md:static md:flex md:gap-3">
                     <li class="relative hover:underline focus-visible:underline active:underline">
                         <a
                             href="/"
@@ -108,6 +108,9 @@
             </div>
         </div>
     {/if}
+
+    <LanguageSwitcher />
+
 </div>
 
 <style lang="postcss">

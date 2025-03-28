@@ -1,5 +1,9 @@
 @import 'tailwindcss';
 
+:root {
+	--color-bg-over: #06014066;
+}
+
 @layer base {
 	svg {
 		max-width: 100%;
@@ -16,6 +20,10 @@
 
 @layer utilities {
 	.container {
-		@apply px-5;
+		@apply px-5 md:px-10;
+	}
+
+	.bg-over {
+		background-color: var(--color-bg-over);
 	}
 }
