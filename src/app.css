@@ -20,7 +20,7 @@
 
 @layer utilities {
 	.container {
-		@apply px-5 md:px-10;
+		@apply px-5 mx-auto md:px-10;
 	}
 
 	.bg-over {

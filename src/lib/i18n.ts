@@ -1,5 +1,3 @@
-// i18n.ts
-
 import { derived, writable } from 'svelte/store';
 import { ELocales, translations } from '$lib/translations/languages';
 

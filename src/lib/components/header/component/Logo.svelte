@@ -2,6 +2,6 @@
 	import LogoIcons from '$lib/icons/LogoIcons.svelte';
 </script>
 
-<a href="/">
+<a href="/" title="На головну" aria-label="На головну">
 	<LogoIcons />
 </a>
