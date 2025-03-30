@@ -4,7 +4,7 @@
 	import NavigationListAndBurger from './NavigationListAndBurger.svelte';
 </script>
 
-<div class="flex justify-between py-5 md:items-center">
+<div class="flex justify-between md:items-center">
 	<Logo />
 
 	<NavigationListAndBurger />

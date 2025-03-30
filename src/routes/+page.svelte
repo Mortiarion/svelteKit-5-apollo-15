@@ -1,6 +1,9 @@
 <script lang='ts'>
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import Header from '$lib/components/header/Header.svelte';
+	import SectionSocialLinkList from '$lib/components/sections/SectionSocialLinkList.svelte';
+	import SectionWellcome from '$lib/components/sections/SectionWellcome.svelte';
+	
 </script>
 
 <svelte:head>
@@ -16,7 +19,9 @@
 	<Header />
 
 	<main class="flex-auto">
-		<h1>main</h1>
+		<SectionSocialLinkList />
+
+		<SectionWellcome />
 	</main>
 
 	<Footer />
