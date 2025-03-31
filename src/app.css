@@ -20,10 +20,14 @@
 
 @layer utilities {
 	.container {
-		@apply px-5 mx-auto md:px-10;
+		@apply mx-auto px-5 md:px-10;
 	}
 
 	.bg-over {
 		background-color: var(--color-bg-over);
+	}
+
+	.bg-menu-hookah-icon {
+		background: url('/menu-hookah-icon.svg') no-repeat center top 50px;
 	}
 }

@@ -4,7 +4,7 @@
 	import JoistickIcon from '$lib/icons/JoistickIcon.svelte';
 </script>
 
-<section class="container">
+<section class="container py-48">
 	<h1 class="mb-10 text-center text-5xl md:text-4xl">Ласкаво просимо до "Apollo 15"</h1>
 
 	<p class="text-center text-xl">

@@ -43,7 +43,7 @@
 </button>
 
 {#if isBurger}
-	<ul transition:fly={{ y: -10 }} class="absolute top-32 md:static md:flex md:gap-3">
+	<ul transition:fly={{ y: -10 }} class="absolute top-32 md:static md:flex md:gap-3 text-xl font-semibold">
 		<li class="relative hover:underline focus-visible:underline active:underline">
 			<a
 				href="/"
