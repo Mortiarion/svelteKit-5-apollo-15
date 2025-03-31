@@ -1,6 +1,7 @@
 <script lang='ts'>
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import Header from '$lib/components/header/Header.svelte';
+	import SectionBarMenu from '$lib/components/sections/SectionBarMenu.svelte';
 	import SectionHookah from '$lib/components/sections/SectionHookah.svelte';
 	import SectionSocialLinkList from '$lib/components/sections/SectionSocialLinkList.svelte';
 	import SectionWellcome from '$lib/components/sections/SectionWellcome.svelte';
@@ -26,6 +27,8 @@
 		<SectionWellcome />
 
 		<SectionHookah />
+
+		<SectionBarMenu />
 	</main>
 
 	<Footer />
