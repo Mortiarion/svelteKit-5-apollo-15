@@ -1,48 +1,83 @@
 <script lang="ts">
-    type TSlideImg = {
-        src: string;
-        alt: string;
-        className?: string;
-    }
+	type TSlideImg = {
+		src: string;
+		alt: string;
+		className?: string;
+	};
 
-    type TSlideGroup = {
-        slides: TSlideImg[];
-    }
-    
-	const slideImages: TSlideGroup[] = [
-		{
-			slides: [
-				{ src: 'galery_one', alt: 'Gallery 1' },
-				{ src: 'galery_two', alt: 'Gallery 2' },
-				{ src: 'galery_three', alt: 'Gallery 3', className: 'col-span-2' }
-			]
-		},
+	const slideImages: Readonly<TSlideImg[][]> = [
+		[
+			{ src: 'galery_one', alt: 'Gallery 1' },
+			{ src: 'galery_two', alt: 'Gallery 2' },
+			{ src: 'galery_three', alt: 'Gallery 3', className: 'col-span-2' }
+		],
 
-		{
-			slides: [
-				{ src: 'galery_five', alt: 'Gallery 4', className: 'row-span-2' },
-				{ src: 'galery_four', alt: 'Gallery 5' },
-				{ src: 'galery_six', alt: 'Gallery 6', className: 'col-start-2' }
-			]
-		},
-        {
-			slides: [
-				{ src: 'galery_one', alt: 'Gallery 1' },
-				{ src: 'galery_two', alt: 'Gallery 2' },
-				{ src: 'galery_three', alt: 'Gallery 3', className: 'col-span-2' }
-			]
-		},
+		[
+			{ src: 'galery_five', alt: 'Gallery 4', className: 'row-span-2' },
+			{ src: 'galery_four', alt: 'Gallery 5' },
+			{ src: 'galery_six', alt: 'Gallery 6', className: 'col-start-2' }
+		],
+		[
+			{ src: 'galery_one', alt: 'Gallery 7' },
+			{ src: 'galery_two', alt: 'Gallery 8' },
+			{ src: 'galery_three', alt: 'Gallery 9', className: 'col-span-2' }
+		]
 	];
+
+	let sliderContainer: HTMLDivElement;
+	let isDown = $state(false);
+	let startX: number;
+	let scrollLeft: number;
+
+	function handleWheel(event: WheelEvent) {
+		if (sliderContainer) {
+			event.preventDefault();
+			sliderContainer.scrollLeft += event.deltaY;
+		}
+	}
+
+	function handleMouseDown(event: MouseEvent) {
+		if (event.button !== 0 || !sliderContainer) return;
+		event.preventDefault();
+		isDown = true;
+		startX = event.clientX;
+		scrollLeft = sliderContainer.scrollLeft;
+
+		const handleMouseMove = (moveEvent: MouseEvent) => {
+			if (!isDown) return;
+			const delta = moveEvent.clientX - startX;
+			sliderContainer.scrollLeft = scrollLeft - delta;
+		};
+
+		const handleMouseUp = () => {
+			isDown = false;
+			document.removeEventListener('mousemove', handleMouseMove);
+			document.removeEventListener('mouseup', handleMouseUp);
+		};
+
+		document.addEventListener('mousemove', handleMouseMove);
+		document.addEventListener('mouseup', handleMouseUp);
+	}
 </script>
 
 <section class="container py-48">
-	<h3>Фотогалерея</h3>
+	<h3
+		class="mb-16 bg-gradient-to-b from-teal-500 via-orange-500 to-indigo-500 bg-clip-text text-center text-5xl text-transparent"
+	>
+		Фотогалерея
+	</h3>
 
 	<div class="slider-wrapper">
-		<div class="slide-container grid grid-flow-col grid-rows-1 gap-2.5">
+		<!-- svelte-ignore a11y_no_static_element_interactions -->
+		<div
+			class="slide-container grid grid-flow-col grid-rows-1 gap-2.5"
+			bind:this={sliderContainer}
+			onwheel={handleWheel}
+			onmousedown={handleMouseDown}
+		>
 			{#each slideImages as slideGroup}
 				<div class="slide grid grid-cols-2 grid-rows-2 gap-2.5">
-					{#each slideGroup.slides as { src, alt, className }}
+					{#each slideGroup as { src, alt, className }}
 						<picture class={className}>
 							<source srcset={`/slider-gallery/${src}.webp`} type="image/webp" />
 
@@ -62,16 +97,26 @@
 			height: 100%;
 		}
 	}
-	.slide-container {
-		max-height: 496px;
-		overflow-x: auto;
+	.slider-wrapper {
+		cursor: grab;
 
-		> .slide:nth-child(2) {
-			width: 798px;
-		}
+		.slide-container {
+			overflow-x: scroll;
+			overflow-y: hidden;
+			max-height: 496px;
+			scrollbar-width: none;
 
-		> .slide {
-			width: 496px;
+			&:active {
+				cursor: grabbing;
+			}
+
+			> .slide:nth-child(2) {
+				width: 798px;
+			}
+
+			> .slide {
+				width: 496px;
+			}
 		}
 	}
 </style>
