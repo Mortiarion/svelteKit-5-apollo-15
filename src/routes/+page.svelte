@@ -2,10 +2,12 @@
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import Header from '$lib/components/header/Header.svelte';
 	import SectionBarMenu from '$lib/components/sections/SectionBarMenu.svelte';
+	import SectionFaq from '$lib/components/sections/SectionFAQ.svelte';
 	import SectionGallery from '$lib/components/sections/SectionGallery.svelte';
 	import SectionHookah from '$lib/components/sections/SectionHookah.svelte';
 	import SectionSocialLinkList from '$lib/components/sections/SectionSocialLinkList.svelte';
 	import SectionWellcome from '$lib/components/sections/SectionWellcome.svelte';
+	
 	
 	
 </script>
@@ -32,6 +34,8 @@
 		<SectionBarMenu />
 
 		<SectionGallery />
+
+		<SectionFaq />
 	</main>
 
 	<Footer />
