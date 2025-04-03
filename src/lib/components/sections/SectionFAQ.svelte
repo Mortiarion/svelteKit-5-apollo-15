@@ -29,78 +29,38 @@
 		}
 	];
 
-    let activeIndex = $state<number | null>(null);
+	let activeIndex = $state<number | null>(null);
 
 	function toggleFaq(index: number) {
-        activeIndex = activeIndex === index ? -1 : index;
+		activeIndex = activeIndex === index ? null : index;
 	}
 </script>
 
-<section id="faq" class="container flex flex-col gap-8 py-48">
-	<h2 class=" font-audiowide text-center text-2xl font-bold lg:text-5xl">ЧАСТІ ПИТАННЯ</h2>
+<section id="faq" class="container py-48">
+	<h2 class="font-audiowide mb-10 text-center text-5xl font-bold underline">ЧАСТІ ПИТАННЯ</h2>
 
-	<ul class="question-list">
+	<ul class="flex flex-col gap-6">
 		{#each faq as { question, respond }, index}
-			<li class="question-item">
-				<div class="question-text text-xl">
-					<button
-						type="button"
-						onclick={() => toggleFaq(index)}
-						class="flex justify-between text-left cursor-pointer"
-					>
-						{question}
-						<span class="icon">&#8250;</span>
-					</button>
+			<li class="text-2xl">
+				<button
+					type="button"
+					onclick={() => toggleFaq(index)}
+					class="flex w-full cursor-pointer justify-between"
+				>
+					{question}
+					<span class:rotate={activeIndex === index} class="text-2xl transition-transform">
+						&#8250;
+					</span>
+				</button>
 
-					{#if activeIndex === index}
-						<div transition:slide class="answer text-base text-white lg:text-xl">
-							<p transition:fade>{respond}</p>
-						</div>
-					{/if}
-				</div>
+				{#if activeIndex === index}
+					<div transition:slide class="px-5 pt-2.5 text-base text-white">
+						<p transition:fade>{respond}</p>
+					</div>
+				{/if}
+
+				<hr class="color-2e2e2e mt-5" />
 			</li>
 		{/each}
 	</ul>
 </section>
-
-<style lang="postcss">
-	.question-list {
-		display: flex;
-		flex-direction: column;
-		gap: 20px;
-	}
-
-	.question-item {
-		display: flex;
-		flex-direction: column;
-		/* cursor: pointer; */
-		border-bottom: 1px solid #2e2e2e;
-		padding-bottom: 20px;
-	}
-
-	.question-text {
-		display: flex;
-		justify-content: space-between;
-		flex-direction: column;
-	}
-
-	.icon {
-		font-size: 1.5rem;
-		transition: transform 0.3s;
-	}
-
-	.rotate {
-		transform: rotate(90deg);
-	}
-
-	.answer {
-		padding: 15px 10px 0;
-		/* overflow: hidden; */
-		/* max-height: 0;/ */
-		/* transition: max-height 0.5s ease; */
-
-		/* &.open {
-			max-height: 200px;
-		} */
-	}
-</style>

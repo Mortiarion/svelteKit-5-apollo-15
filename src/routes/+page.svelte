@@ -5,6 +5,7 @@
 	import SectionFaq from '$lib/components/sections/SectionFAQ.svelte';
 	import SectionGallery from '$lib/components/sections/SectionGallery.svelte';
 	import SectionHookah from '$lib/components/sections/SectionHookah.svelte';
+	import SectionMapLocation from '$lib/components/sections/SectionMapLocation.svelte';
 	import SectionSocialLinkList from '$lib/components/sections/SectionSocialLinkList.svelte';
 	import SectionWellcome from '$lib/components/sections/SectionWellcome.svelte';
 	
@@ -36,6 +37,8 @@
 		<SectionGallery />
 
 		<SectionFaq />
+
+		<SectionMapLocation />
 	</main>
 
 	<Footer />

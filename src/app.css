@@ -2,6 +2,7 @@
 
 :root {
 	--color-bg-over: #06014066;
+	--color-2e2e2e: #2e2e2e;
 }
 
 @layer base {
@@ -23,11 +24,19 @@
 		@apply mx-auto px-5 md:px-10;
 	}
 
+	.color-2e2e2e {
+		color: var(--color-2e2e2e);
+	}
+
 	.bg-over {
 		background-color: var(--color-bg-over);
 	}
 
 	.bg-menu-hookah-icon {
 		background: url('/menu-hookah-icon.svg') no-repeat center top 50px;
+	}
+
+	.rotate {
+		transform: rotate(90deg);
 	}
 }
