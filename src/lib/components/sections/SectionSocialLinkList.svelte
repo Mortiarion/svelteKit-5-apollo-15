@@ -3,7 +3,7 @@
 </script>
 
 <section>
-	<div class="container py-48">
-		<SocialLinkList />
+	<div class="container py-48 max-md:py-25">
+		<SocialLinkList className={'flex flex-col items-end gap-5'} />
 	</div>
 </section>

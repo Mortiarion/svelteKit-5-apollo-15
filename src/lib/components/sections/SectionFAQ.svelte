@@ -36,16 +36,20 @@
 	}
 </script>
 
-<section id="faq" class="container py-48">
-	<h2 class="font-audiowide mb-10 text-center text-5xl font-bold underline">ЧАСТІ ПИТАННЯ</h2>
+<section id="faq" class="container pb-25">
+	<h4
+		class="main-title bg-gradient-to-b from-cyan-900 via-indigo-500 to-amber-100 bg-clip-text text-transparent"
+	>
+		ЧАСТІ ПИТАННЯ
+	</h4>
 
 	<ul class="flex flex-col gap-6">
 		{#each faq as { question, respond }, index}
-			<li class="text-2xl">
+			<li class="text-2xl max-sm:text-lg">
 				<button
 					type="button"
 					onclick={() => toggleFaq(index)}
-					class="flex w-full cursor-pointer justify-between"
+					class="flex w-full cursor-pointer justify-between text-left max-sm:gap-2"
 				>
 					{question}
 					<span class:rotate={activeIndex === index} class="text-2xl transition-transform">
@@ -54,7 +58,7 @@
 				</button>
 
 				{#if activeIndex === index}
-					<div transition:slide class="px-5 pt-2.5 text-base text-white">
+					<div transition:slide class="px-5 pt-2.5 text-base text-white max-sm:text-sm">
 						<p transition:fade>{respond}</p>
 					</div>
 				{/if}

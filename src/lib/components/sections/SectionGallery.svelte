@@ -60,17 +60,17 @@
 	}
 </script>
 
-<section class="container py-48">
-	<h3
-		class="mb-16 bg-gradient-to-b from-teal-500 via-orange-500 to-indigo-500 bg-clip-text text-center text-5xl text-transparent"
+<section class="container pb-25">
+	<h4
+		class="main-title bg-gradient-to-b from-teal-500 via-orange-500 to-indigo-500 bg-clip-text text-transparent"
 	>
 		Фотогалерея
-	</h3>
+	</h4>
 
 	<div class="slider-wrapper">
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<div
-			class="slide-container grid grid-flow-col grid-rows-1 gap-2.5"
+			class="slide-container max-h-[496px] max-lg:max-h-[396px] grid grid-flow-col grid-rows-1 gap-2.5"
 			bind:this={sliderContainer}
 			onwheel={handleWheel}
 			onmousedown={handleMouseDown}
@@ -103,7 +103,6 @@
 		.slide-container {
 			overflow-x: scroll;
 			overflow-y: hidden;
-			max-height: 496px;
 			scrollbar-width: none;
 
 			&:active {

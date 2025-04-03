@@ -328,14 +328,20 @@
 	];
 </script>
 
-<section class="font-audiowide container py-48">
-	<h2 class="mb-16 text-center text-5xl font-bold underline bg-gradient-to-tr from-stone-50 via-stone-400 to-violet-700 bg-clip-text text-transparent">Меню</h2>
+<section class="font-audiowide container pb-25">
+	<h4
+		class="main-title bg-gradient-to-tr from-stone-50 via-stone-400 to-violet-700 bg-clip-text text-center text-5xl font-bold text-transparent underline"
+	>
+		Меню
+	</h4>
 
 	<div class="grid grid-cols-2 gap-10 max-lg:grid-cols-1">
 		{#each menu as category}
 			<div>
 				<div class="mb-2.5 flex items-center">
-					<p class="mr-5 text-4xl max-md:text-3xl text-nowrap bg-gradient-to-b from-zinc-600 via-purple-300 to-rose-600 bg-clip-text text-transparent">
+					<p
+						class="mr-5 bg-gradient-to-b from-zinc-600 via-purple-300 to-rose-600 bg-clip-text text-4xl text-nowrap text-transparent max-md:text-3xl"
+					>
 						{category.title}
 					</p>
 

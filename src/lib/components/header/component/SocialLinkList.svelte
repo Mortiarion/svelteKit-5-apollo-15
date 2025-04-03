@@ -4,26 +4,28 @@
 	import TellIcon from '$lib/icons/TellIcon.svelte';
 	import TikTokIcon from '$lib/icons/TikTokIcon.svelte';
 	import ViberIcon from '$lib/icons/ViberIcon.svelte';
+
+	let { className = '' } = $props();
 </script>
 
-<ul class="flex flex-col items-end gap-5">
+<ul class={className}>
 	<li>
-		<a href="/">
+		<a href="tel:+380936551515">
 			<TellIcon />
 		</a>
 	</li>
 	<li>
-		<a href="/">
+		<a href="https://t.me/Apollo15Odessa">
 			<TelegramIcon />
 		</a>
 	</li>
 	<li>
-		<a href="/">
+		<a href="viber://chat?number=%2B380936551515">
 			<ViberIcon />
 		</a>
 	</li>
 	<li>
-		<a href="/">
+		<a href="https://www.instagram.com/apollo_15.bar/profilecard/?igsh=MXhuc3U1MnZieWEyeQ==">
 			<InstagramIcon />
 		</a>
 	</li>

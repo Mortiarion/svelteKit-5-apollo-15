@@ -4,8 +4,8 @@
 	import JoistickIcon from '$lib/icons/JoistickIcon.svelte';
 </script>
 
-<section class="container py-48">
-	<h1 class="mb-10 text-center text-5xl md:text-4xl">Ласкаво просимо до "Apollo 15"</h1>
+<section class="container pb-25">
+	<h1 class="main-title bg-gradient-to-l from-slate-400 via-sky-300 to-stone-100 bg-clip-text text-transparent">Ласкаво просимо до "Apollo 15"</h1>
 
 	<p class="text-center text-xl">
 		Наш Lounge Bar це затишний куточок, де час сповільнюється, а фантазія розлітається у світ
