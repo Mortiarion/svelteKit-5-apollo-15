@@ -5,6 +5,7 @@
 	--color-2e2e2e: #2e2e2e;
 	--font-lato: 'Lato', sans-serif;
 	--font-audiowide: 'Audiowide', sans-serif;
+	--backdrop-modal: #000000cc;
 }
 
 @layer base {
