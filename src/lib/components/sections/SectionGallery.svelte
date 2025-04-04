@@ -70,7 +70,7 @@
 	<div class="slider-wrapper">
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<div
-			class="slide-container max-h-[496px] max-lg:max-h-[396px] grid grid-flow-col grid-rows-1 gap-2.5"
+			class="slide-container grid max-h-[496px] grid-flow-col grid-rows-1 gap-2.5 max-lg:max-h-[396px]"
 			bind:this={sliderContainer}
 			onwheel={handleWheel}
 			onmousedown={handleMouseDown}

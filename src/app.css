@@ -38,7 +38,7 @@
 
 	.bg-menu-hookah-icon {
 		background: url('/menu-hookah-icon.svg') no-repeat center top 50px;
-		@apply max-lg:bg-contain
+		@apply max-lg:bg-contain;
 	}
 
 	.rotate {
@@ -50,7 +50,7 @@
 	}
 
 	.main-title {
-		@apply text-5xl uppercase font-extrabold mb-13 text-center max-md:text-4xl max-md:mb-10 max-sm:text-3xl;
+		@apply mb-13 text-center text-5xl font-extrabold uppercase max-md:mb-10 max-md:text-4xl max-sm:text-3xl;
 		font-family: var(--font-audiowide);
 	}
 

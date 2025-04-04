@@ -11,32 +11,26 @@
 
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
 <dialog
-class=" m-auto text-white bg-transparent bg-modal scrollbar-width"
+	class=" bg-modal scrollbar-width m-auto bg-transparent text-white"
 	bind:this={dialog}
 	onclose={() => (showModal = false)}
 	onclick={(e) => {
 		if (e.target === dialog) dialog.close();
 	}}
 >
-	<div class="flex flex-col gap-10 py-5 px-10">
+	<div class="flex flex-col gap-10 px-10 py-5 max-md:px-5">
 		{@render header?.()}
 
 		{@render children?.()}
 		<!-- svelte-ignore a11y_autofocus -->
-		<button class="text-4xl px-3 py-1 cursor-pointer" autofocus onclick={() => dialog.close()}>&times</button>
+		<button class="cursor-pointer px-3 py-1 text-4xl" autofocus onclick={() => dialog.close()}
+			>&times</button
+		>
 	</div>
 </dialog>
 
 <style lang="postcss">
 	dialog {
-		/* &::backdrop {
-			background: rgba(0, 0, 0, 0.3);
-		} */
-
-		> div {
-			padding: 20px 40px;
-		}
-
 		&[open] {
 			animation: zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 		}

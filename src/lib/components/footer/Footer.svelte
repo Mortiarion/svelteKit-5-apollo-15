@@ -51,10 +51,10 @@
 
 		<Modal bind:showModal>
 			{#snippet header()}
-				<h1 class="text-center text-5xl">Політика конфіденційності</h1>
+				<h1 class="text-center text-5xl max-md:text-3xl">Політика конфіденційності</h1>
 			{/snippet}
 
-			<p class="text-2xl">
+			<p class="text-2xl max-md:text-lg">
 				Ця політика конфіденційності визначає, як наш сайт – «Apollo 15» обробляє особисту
 				інформацію відвідувачів. Ми поважаємо вашу приватність та зобов'язуємося забезпечувати
 				захист вашої інформації.
@@ -63,11 +63,11 @@
 			<ul class="flex flex-col gap-10">
 				{#each listPrivacyPolicy as { title, description }}
 					<li>
-						<p class="text-3xl">
+						<p class="text-3xl underline underline-offset-5 max-md:text-xl">
 							{title}
 						</p>
 
-						<span class="text-2xl">
+						<span class="text-2xl max-md:text-base">
 							{description}
 						</span>
 					</li>

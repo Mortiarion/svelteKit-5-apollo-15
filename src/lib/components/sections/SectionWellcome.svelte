@@ -5,7 +5,11 @@
 </script>
 
 <section class="container pb-25">
-	<h1 class="main-title bg-gradient-to-l from-slate-400 via-sky-300 to-stone-100 bg-clip-text text-transparent">Ласкаво просимо до "Apollo 15"</h1>
+	<h1
+		class="main-title bg-gradient-to-l from-slate-400 via-sky-300 to-stone-100 bg-clip-text text-transparent"
+	>
+		Ласкаво просимо до "Apollo 15"
+	</h1>
 
 	<p class="text-center text-xl">
 		Наш Lounge Bar це затишний куточок, де час сповільнюється, а фантазія розлітається у світ

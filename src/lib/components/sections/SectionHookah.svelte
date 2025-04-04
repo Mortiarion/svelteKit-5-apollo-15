@@ -29,9 +29,15 @@
 </script>
 
 <section class="relative container pb-25">
-	<h4 class="main-title bg-gradient-to-br from-blue-600 via-lime-400 to-neutral-950 bg-clip-text text-transparent">Кальян</h4>
+	<h4
+		class="main-title bg-gradient-to-br from-blue-600 via-lime-400 to-neutral-950 bg-clip-text text-transparent"
+	>
+		Кальян
+	</h4>
 
-	<div class="bg-menu-hookah-icon grid grid-cols-2 grid-rows-3 gap-y-20 pt-24 max-lg:flex max-lg:flex-col max-sm:gap-10">
+	<div
+		class="bg-menu-hookah-icon grid grid-cols-2 grid-rows-3 gap-y-20 pt-24 max-lg:flex max-lg:flex-col max-sm:gap-10"
+	>
 		{#each hookahMenu as hookah, i}
 			<div
 				class="font-audiowide flex flex-col items-center gap-2.5 {i === hookahMenu.length - 1
