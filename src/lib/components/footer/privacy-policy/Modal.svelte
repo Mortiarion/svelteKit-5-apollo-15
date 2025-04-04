@@ -1,50 +1,51 @@
 <script>
 	let { showModal = $bindable(), header, children } = $props();
 
-	let dialog = $state(); // HTMLDialogElement
+	let dialog = $state();
 
 	$effect(() => {
 		if (showModal) dialog.showModal();
+		document.body.classList.toggle('overflow-hidden');
 	});
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
 <dialog
-    class="text-white"
+class=" m-auto text-white bg-transparent bg-modal scrollbar-width"
 	bind:this={dialog}
 	onclose={() => (showModal = false)}
-	onclick={(e) => { if (e.target === dialog) dialog.close(); }}
+	onclick={(e) => {
+		if (e.target === dialog) dialog.close();
+	}}
 >
-	<div class=" max-h-[500px] overflow-y-scroll px-25">
+	<div class="flex flex-col gap-10 py-5 px-10">
 		{@render header?.()}
-		<hr />
+
 		{@render children?.()}
-		<hr />
 		<!-- svelte-ignore a11y_autofocus -->
-		<button autofocus onclick={() => dialog.close()}>close modal</button>
+		<button class="text-4xl px-3 py-1 cursor-pointer" autofocus onclick={() => dialog.close()}>&times</button>
 	</div>
 </dialog>
 
-<style>
+<style lang="postcss">
 	dialog {
-        background-color: transparent;
-        display: flex;
+		/* &::backdrop {
+			background: rgba(0, 0, 0, 0.3);
+		} */
+
+		> div {
+			padding: 20px 40px;
+		}
+
+		&[open] {
+			animation: zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+		}
+
+		&[open]::backdrop {
+			animation: fade 0.2s ease-out;
+		}
 	}
-	dialog::backdrop {
-		background: var(--backdrop-modal);
-	}
-	dialog > div {
-		/* padding: 1em; */
-        display: flex;
-        flex-direction: column;
-        /* align-items: center; */
-        /* justify-content: center; */
-        
-	}
-	dialog[open] {
-		animation: zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        
-	}
+
 	@keyframes zoom {
 		from {
 			transform: scale(0.95);
@@ -53,9 +54,7 @@
 			transform: scale(1);
 		}
 	}
-	dialog[open]::backdrop {
-		animation: fade 0.2s ease-out;
-	}
+
 	@keyframes fade {
 		from {
 			opacity: 0;
@@ -64,5 +63,4 @@
 			opacity: 1;
 		}
 	}
-	
 </style>

@@ -40,18 +40,7 @@
 		}
 	];
 
-	// let isOpenPolicy = $state(false);
-	let showModal = $state(false);
-
-	// function togglePolicy() {
-	// 	isOpenPolicy = !isOpenPolicy;
-	// 	document.body.classList.toggle('overflow-hidden');
-	// }
-
-	// function closePolicy() {
-	// 	isOpenPolicy = false;
-	// 	document.body.classList.remove('overflow-hidden');
-	// }
+	let showModal = $state(true);
 </script>
 
 <footer class="container overflow-visible py-10">
@@ -60,49 +49,25 @@
 			>Політика конфіденційності</button
 		>
 
-		<!-- {#if isOpenPolicy}
-			<div
-				class="bg-modal fixed inset-0 flex min-h-screen flex-col items-center justify-center overflow-hidden px-10"
-			>
-				<div class="font-lato h-[500px] overflow-scroll lg:mt-20 lg:h-[600px] xl:px-20">
-					<button type="button" class="text-right text-3xl" onclick={closePolicy}>&times</button>
-					<h1 class="mb-5 text-center text-xl lg:mb-10 lg:text-5xl">Політика конфіденційності</h1>
-					<p class="mb-10 text-sm lg:mb-14 lg:text-2xl">
-						Ця політика конфіденційності визначає, як наш сайт – «Apollo 15» обробляє особисту
-						інформацію відвідувачів. Ми поважаємо вашу приватність та зобов'язуємося забезпечувати
-						захист вашої інформації.
-					</p>
-					<div class="flex flex-col gap-5 lg:gap-14">
-						{#each list as l}
-							<div class="flex flex-col gap-2.5 text-sm lg:text-2xl">
-								<p class="font-bold">{l.text_one}</p>
-								<span>{l.text_two}</span>
-							</div>
-						{/each}
-					</div>
-				</div>
-			</div>
-		{/if} -->
-
-		<!-- <button onclick={() => (showModal = true)}> show modal </button> -->
-
 		<Modal bind:showModal>
 			{#snippet header()}
-				<h1 class="mb-5 text-center text-5xl">Політика конфіденційності</h1>
-				<p class="mb-10 text-2xl">
-					Ця політика конфіденційності визначає, як наш сайт – «Apollo 15» обробляє особисту
-					інформацію відвідувачів. Ми поважаємо вашу приватність та зобов'язуємося забезпечувати
-					захист вашої інформації.
-				</p>
+				<h1 class="text-center text-5xl">Політика конфіденційності</h1>
 			{/snippet}
 
-			<ul>
+			<p class="text-2xl">
+				Ця політика конфіденційності визначає, як наш сайт – «Apollo 15» обробляє особисту
+				інформацію відвідувачів. Ми поважаємо вашу приватність та зобов'язуємося забезпечувати
+				захист вашої інформації.
+			</p>
+
+			<ul class="flex flex-col gap-10">
 				{#each listPrivacyPolicy as { title, description }}
 					<li>
-						<p>
+						<p class="text-3xl">
 							{title}
 						</p>
-						<span>
+
+						<span class="text-2xl">
 							{description}
 						</span>
 					</li>
@@ -112,8 +77,10 @@
 
 		<Logo className={'max-w-[146px]'} />
 
-		<button type="button" class="hidden cursor-pointer max-md:block" onclick={() => (showModal = true)}
-			>Політика конфіденційності</button
+		<button
+			type="button"
+			class="hidden cursor-pointer max-md:block"
+			onclick={() => (showModal = true)}>Політика конфіденційності</button
 		>
 		<span>© 2025 UA. Всі права захищені</span>
 	</div>
