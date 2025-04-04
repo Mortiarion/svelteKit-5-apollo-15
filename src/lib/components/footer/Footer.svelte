@@ -40,7 +40,7 @@
 		}
 	];
 
-	let showModal = $state(true);
+	let showModal = $state(false);
 </script>
 
 <footer class="container overflow-visible py-10">
