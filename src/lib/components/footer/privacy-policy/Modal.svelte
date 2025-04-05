@@ -4,8 +4,13 @@
 	let dialog = $state();
 
 	$effect(() => {
-		if (showModal) dialog.showModal();
-		document.body.classList.toggle('overflow-hidden');
+		if (showModal) {
+			dialog.showModal();
+			document.body.classList.add('overflow-hidden');
+		} else {
+			dialog.close();
+			document.body.classList.remove('overflow-hidden');
+		}
 	});
 </script>
 
