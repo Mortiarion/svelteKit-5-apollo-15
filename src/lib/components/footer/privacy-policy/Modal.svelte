@@ -16,21 +16,23 @@
 
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
 <dialog
-	class=" bg-modal scrollbar-width m-auto bg-transparent text-white"
+	class="bg-modal scrollbar-width relative m-auto overflow-hidden bg-transparent text-white"
 	bind:this={dialog}
 	onclose={() => (showModal = false)}
 	onclick={(e) => {
 		if (e.target === dialog) dialog.close();
 	}}
 >
-	<div class="flex flex-col gap-10 px-10 py-5 max-md:px-5">
-		{@render header?.()}
+	{@render header?.()}
+	<!-- svelte-ignore a11y_autofocus -->
+	<button class="cursor-pointer px-3 py-1 text-4xl" autofocus onclick={() => dialog.close()}>
+		&times
+	</button>
 
+	<div
+		class="scrollbar-width flex max-h-[500px] max-w-[900px] flex-col gap-10 overflow-y-scroll px-10 py-5 text-center max-md:px-5"
+	>
 		{@render children?.()}
-		<!-- svelte-ignore a11y_autofocus -->
-		<button class="cursor-pointer px-3 py-1 text-4xl" autofocus onclick={() => dialog.close()}
-			>&times</button
-		>
 	</div>
 </dialog>
 
