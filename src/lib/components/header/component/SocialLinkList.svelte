@@ -5,33 +5,48 @@
 	import TikTokIcon from '$lib/icons/TikTokIcon.svelte';
 	import ViberIcon from '$lib/icons/ViberIcon.svelte';
 
+	const socialLinks = [
+		{
+			href: 'tel:+380936551515',
+			Icon: TellIcon,
+			ariaLabel: 'Зателефонувати',
+			title: 'Зателефонувати'
+		},
+		{
+			href: 'https://t.me/Apollo15Odessa',
+			Icon: TelegramIcon,
+			ariaLabel: 'Telegram',
+			title: 'Telegram'
+		},
+		{
+			href: 'viber://chat?number=%2B380936551515',
+			Icon: ViberIcon,
+			ariaLabel: 'Viber',
+			title: 'Viber'
+		},
+		{
+			href: 'https://www.instagram.com/apollo_15.bar/profilecard/?igsh=MXhuc3U1MnZieWEyeQ==',
+			Icon: InstagramIcon,
+			ariaLabel: 'Instagram',
+			title: 'Instagram'
+		},
+		{
+			href: 'https://www.tiktok.com/@apollo15bar',
+			Icon: TikTokIcon,
+			ariaLabel: 'TikTok',
+			title: 'TikTok'
+		}
+	];
+
 	let { className = '' } = $props();
 </script>
 
-<ul class={className}>
-	<li>
-		<a href="tel:+380936551515">
-			<TellIcon />
-		</a>
-	</li>
-	<li>
-		<a href="https://t.me/Apollo15Odessa">
-			<TelegramIcon />
-		</a>
-	</li>
-	<li>
-		<a href="viber://chat?number=%2B380936551515">
-			<ViberIcon />
-		</a>
-	</li>
-	<li>
-		<a href="https://www.instagram.com/apollo_15.bar/profilecard/?igsh=MXhuc3U1MnZieWEyeQ==">
-			<InstagramIcon />
-		</a>
-	</li>
-	<li>
-		<a href="/">
-			<TikTokIcon />
-		</a>
-	</li>
+<ul class="flex gap-4 {className}">
+	{#each socialLinks as { href, Icon, ariaLabel, title }}
+		<li>
+			<a {href} {title} aria-label={ariaLabel} class="transition-opacity hover:opacity-80">
+				<Icon />
+			</a>
+		</li>
+	{/each}
 </ul>
