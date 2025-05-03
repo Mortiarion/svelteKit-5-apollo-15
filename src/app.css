@@ -57,4 +57,95 @@
 	.scrollbar-width {
 		scrollbar-width: none;
 	}
+
+	.social-button {
+		@apply relative h-[50px] w-[200px]  text-center text-[18px] leading-[48px] tracking-[0.1em] uppercase no-underline transition duration-500;
+		-webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
+		will-change: transform, opacity;
+	}
+
+	.social-button span {
+		@apply absolute inset-0 m-[1px] flex items-center justify-center  text-center text-white/20 transition duration-500;
+	}
+
+	.social-button:hover span {
+		@apply text-white;
+	}
+
+	.social-button span::before {
+		content: '';
+		@apply absolute top-0 left-0 z-10 h-1/2 w-full bg-white/10;
+	}
+
+	.social-button::before {
+		content: '';
+		@apply absolute inset-0 h-full w-full opacity-0 transition duration-[2.5s];
+		background: linear-gradient(
+			45deg,
+			#c0392b,
+			#f39c12,
+			#2ecc71,
+			#3498db,
+			#9b59b6,
+			#c0392b,
+			#f39c12,
+			#2ecc71,
+			#3498db,
+			#9b59b6
+		);
+		background-size: 400%;
+		animation: eff 20s linear infinite;
+	}
+
+	.social-button:hover::before,
+	.social-button:hover::after {
+		@apply opacity-100;
+	}
+
+	.social-button::after {
+		content: '';
+		@apply absolute inset-0 h-full w-full opacity-0 transition duration-500;
+		background: linear-gradient(
+			45deg,
+			#c0392b,
+			#f39c12,
+			#2ecc71,
+			#3498db,
+			#9b59b6,
+			#c0392b,
+			#f39c12,
+			#2ecc71,
+			#3498db,
+			#9b59b6
+		);
+		background-size: 400%;
+		filter: blur(20px);
+		animation: eff 20s ease infinite;
+	}
+
+	@keyframes eff {
+		0% {
+			background-position: 0 0;
+		}
+		50% {
+			background-position: 400% 0;
+		}
+		100% {
+			background-position: 0 0;
+		}
+	}
+
+	.social-button i {
+		@apply mr-2 text-[20px];
+	}
+
+	@media (max-width: 640px) {
+		.social-button {
+			@apply h-[40px] w-[160px] text-[14px] leading-[38px];
+		}
+
+		.social-button i {
+			@apply mr-1.5 text-[16px];
+		}
+	}
 }
