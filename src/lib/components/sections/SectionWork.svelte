@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SocialLinkList from '../header/component/SocialLinkList.svelte';
+	// import SocialLinkList from '../header/component/SocialLinkList.svelte';
 </script>
 
 <section id="contacts" class="container pb-25">
@@ -14,9 +14,9 @@
 			<span class="text-2xl max-sm:text-lg">Райдужний массив 15/2</span>
 		</div>
 
-		<div class="flex flex-col items-center gap-2.5">
+		<!-- <div class="flex flex-col items-center gap-2.5">
 			<p class="font-audiowide border-b text-4xl max-sm:text-2xl">Контакти:</p>
-			<SocialLinkList className={'flex gap-5'} />
-		</div>
+			<SocialLinkList  />
+		</div> -->
 	</div>
 </section>

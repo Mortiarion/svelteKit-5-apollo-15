@@ -16,7 +16,6 @@
 </svelte:head>
 
 <section class="font-lato bg-over flex min-h-dvh flex-col text-white">
-	<!-- svelte-ignore a11y_media_has_caption -->
 	<video class="fixed -z-10 min-h-dvh min-w-dvw object-cover" autoplay loop muted playsinline>
 		<source src="./paralax.mp4" type="video/mp4" />
 	</video>

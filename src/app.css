@@ -25,7 +25,7 @@
 
 @layer utilities {
 	.container {
-		@apply mx-auto px-5 md:px-10;
+		@apply mx-auto px-5 ;
 	}
 
 	.color-2e2e2e {
@@ -65,7 +65,7 @@
 	}
 
 	.social-button span {
-		@apply absolute inset-0 m-[1px] flex items-center justify-center  text-center text-white/20 transition duration-500;
+		@apply absolute inset-0 m-[1px] flex items-center justify-center  text-center text-white/60 transition duration-500;
 	}
 
 	.social-button:hover span {
@@ -74,7 +74,7 @@
 
 	.social-button span::before {
 		content: '';
-		@apply absolute top-0 left-0 z-10 h-1/2 w-full bg-white/10;
+		@apply absolute top-0 left-0 z-10 h-1/2 w-full ;
 	}
 
 	.social-button::before {

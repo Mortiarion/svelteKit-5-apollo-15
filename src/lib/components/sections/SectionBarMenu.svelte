@@ -328,7 +328,7 @@
 	];
 </script>
 
-<section class="font-audiowide container pb-25">
+<section id="menu" class="font-audiowide container pb-25">
 	<h4
 		class="main-title bg-gradient-to-tr from-stone-50 via-stone-400 to-violet-700 bg-clip-text text-center text-5xl font-bold text-transparent underline"
 	>

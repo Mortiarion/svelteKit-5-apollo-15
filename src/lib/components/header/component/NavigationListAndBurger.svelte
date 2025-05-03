@@ -9,12 +9,12 @@
 	let burgerButton: HTMLElement;
 
 	const navItems = [
-		{ href: '/', key: 'home', title: 'Головна сторінка' },
-		{ href: '/#about-us', key: 'about', title: 'Про нас' },
+		// { href: '/', key: 'home', title: 'Головна сторінка' },
+		// { href: '/#about-us', key: 'about', title: 'Про нас' },
 		{ href: '/#menu', key: 'menu', title: 'Меню' },
 		{ href: '/#galery', key: 'gallery', title: 'Галерея' },
 		{ href: '/#faq', key: 'faq', title: 'FAQ' },
-		{ href: '/#contacts', key: 'contact', title: 'Контакти' }
+		// { href: '/#contacts', key: 'contact', title: 'Контакти' }
 	];
 
 	function toggleDropdownBurger() {
