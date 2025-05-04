@@ -13,12 +13,35 @@
 
 <svelte:head>
 	<title>Apollo-15</title>
+
+	<meta
+		name="description"
+		content="Ласкаво просимо до Apollo 15 — затишний Lounge Bar із космічною атмосферою, димними кальянами, авторськими коктейлями та настільними іграми. Відвідайте нас!"
+	/>
+	<meta
+		name="keywords"
+		content="Apollo 15, Lounge Bar, кальяни, коктейлі, настільні ігри, космічна атмосфера, Одесса"
+	/>
+	<meta name="author" content="MoodPanda" />
+	<meta name="robots" content="index, follow" />
 </svelte:head>
 
-<section class="font-lato bg-over flex min-h-dvh flex-col text-white">
-	<video class="fixed -z-10 min-h-dvh min-w-dvw object-cover" autoplay loop muted playsinline>
-		<source src="./paralax.mp4" type="video/mp4" />
-	</video>
+<section class="font-lato flex min-h-dvh flex-col text-white">
+	<div class="fixed inset-0 -z-1">
+		<video
+			class="min-h-dvh min-w-dvw object-cover"
+			autoplay
+			loop
+			muted
+			playsinline
+			preload="metadata"
+		>
+			<source src="/paralax.mp4" type="video/mp4" />
+			<source src="/paralax.webm" type="video/webm" />
+		</video>
+
+		<div class="bg-over absolute inset-0"></div>
+	</div>
 
 	<Header />
 

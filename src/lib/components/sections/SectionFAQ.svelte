@@ -1,33 +1,25 @@
 <script lang="ts">
+	import { t } from '$lib/i18n';
 	import { fade, slide } from 'svelte/transition';
 
-	const faq = [
+	interface IFaq {
+		question: string;
+		respond: string;
+	}
+
+	const faq: IFaq[] = $derived([
+		{ question: $t('section.faq.list.one.question'), respond: $t('section.faq.list.one.respond') },
+		{ question: $t('section.faq.list.two.question'), respond: $t('section.faq.list.two.respond') },
 		{
-			question: 'Чи можна у Вас замовити кальян та яка вартість?',
-			respond:
-				'Так, можна. Звичайні табаки, які підходять для слабких та середніх, – 300 грн. Преміум лінійка, яка підходить для середніх та міцних, – 350 грн.'
+			question: $t('section.faq.list.three.question'),
+			respond: $t('section.faq.list.three.respond')
 		},
 		{
-			question: 'Чи можливо у Вас замовити їжу?',
-			respond:
-				'Так, це можливо. У нас ви можете замовити смачні солодкі та солоні закуски, а також організувати доставку безпосередньо до нашого закладу.'
+			question: $t('section.faq.list.four.question'),
+			respond: $t('section.faq.list.four.respond')
 		},
-		{
-			question: 'Ви працюєте при відключенні світла?',
-			respond:
-				'Так, працюємо. В нас завжди є електропостачання завдяки генератору та оптоволоконному інтернету.'
-		},
-		{
-			question: 'Чи можливо провести у Вас святкові заходи?',
-			respond:
-				'Так, в нашому барі будується окрема кімната (скоро відкриття) для проведення заходів, та діє знижка іменинникам 20% + можливо принести свій алкоголь за домовленістю з адміністрацією.'
-		},
-		{
-			question: 'Чи можливо прийти просто пограти в Playstation?',
-			respond:
-				'Ні, мінімальне замовлення для гри у Playstation – 1 кальян, що еквівалентно двом годинам гри.'
-		}
-	];
+		{ question: $t('section.faq.list.five.question'), respond: $t('section.faq.list.five.respond') }
+	]);
 
 	let activeIndex = $state<number | null>(null);
 

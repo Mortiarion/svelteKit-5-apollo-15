@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { t } from '$lib/i18n';
 	import CoctailIcon from '$lib/icons/CoctailIcon.svelte';
 	import HookahIcon from '$lib/icons/HookahIcon.svelte';
 	import JoistickIcon from '$lib/icons/JoistickIcon.svelte';
@@ -8,19 +9,15 @@
 	<h1
 		class="main-title bg-gradient-to-l from-slate-400 via-sky-300 to-stone-100 bg-clip-text text-transparent"
 	>
-		Ласкаво просимо до "Apollo 15"
+		{$t('section.welcome.title')}
 	</h1>
 
 	<p class="text-center text-xl">
-		Наш Lounge Bar це затишний куточок, де час сповільнюється, а фантазія розлітається у світ
-		загадкового космосу. Стильний інтер'єр, м'яке світло та димні кальяни створюють неймовірну та
-		неповторну атмосферу, даруючи незабутні враження та приємні емоції. Барна карта приємно вас
-		здивує як класичними так і авторськими міксами. А шанувальникам чаю ми пропонуємо оцінити
-		вишукані сорти чаю з усього світу.
+		{$t('section.welcome.description')}
 	</p>
 
 	<p class="mb-16 text-center text-xl">
-		Також до вашої уваги настільні ігри та ігри на PlayStation.
+		{$t('section.welcome.paragraph')}
 	</p>
 
 	<div class="grid grid-cols-3 gap-12 text-xl max-md:grid-cols-1">
@@ -30,8 +27,7 @@
 			</i>
 
 			<p class="text-center">
-				Димні та неймовірні кальяни поринуть вас в атмосферу невагомості, та перенесуть у таємничий
-				космос!
+				{$t('section.welcome.icon.one')}
 			</p>
 		</div>
 
@@ -41,8 +37,7 @@
 			</i>
 
 			<p class="text-center">
-				Перенесе вас у загадковий світ віртуальної реальності, з самими свіжими іграми для вас та
-				ваших друзів!
+				{$t('section.welcome.icon.two')}
 			</p>
 		</div>
 
@@ -52,7 +47,7 @@
 			</i>
 
 			<p class="text-center">
-				Коктейльна карта відірве вас від реальності та подарує вишуканний світ незабутніх емоцій!
+				{$t('section.welcome.icon.three')}
 			</p>
 		</div>
 	</div>

@@ -1,38 +1,40 @@
 <script lang="ts">
-	let hookahMenu = [
+	import { t } from '$lib/i18n';
+
+	let hookahMenu = $derived([
 		{
 			heading: 'ЗЕМЛЯ LITE',
-			text: 'Використання для не міцних сортів табаку',
+			text: $t('section.hookah.menu.list.one.text'),
 			paragraph: '300₴'
 		},
 		{
 			heading: 'САТУРН PREMIUM',
-			text: 'Використання міцних сортів табаку',
+			text: $t('section.hookah.menu.list.two.text'),
 			paragraph: '350₴'
 		},
 		{
 			heading: 'ЗАГАДКОВИЙ КОСМОС',
-			text: 'Авторський мікс для подорожі у глибь космосу',
+			text: $t('section.hookah.menu.list.three.text'),
 			paragraph: '390₴'
 		},
 		{
 			heading: 'НЕВАГОМІСТЬ',
-			text: 'Авторський мікс для подорожі по просторам галактик',
+			text: $t('section.hookah.menu.list.four.text'),
 			paragraph: '390₴'
 		},
 		{
 			heading: 'АПОЛЛОН 15',
-			text: 'Авторський мікс для справжніх мандрівників',
+			text: $t('section.hookah.menu.list.five.text'),
 			paragraph: '390₴'
 		}
-	];
+	]);
 </script>
 
 <section class="relative container pb-25">
 	<h4
 		class="main-title bg-gradient-to-br from-blue-600 via-lime-400 to-neutral-950 bg-clip-text text-transparent"
 	>
-		Кальян
+		{$t('section.hookah.menu.title')}
 	</h4>
 
 	<div

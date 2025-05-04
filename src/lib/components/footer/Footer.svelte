@@ -1,87 +1,122 @@
 <script lang="ts">
+	import { t } from '$lib/i18n';
 	import Logo from '../header/component/Logo.svelte';
-	import Modal from './privacy-policy/Modal.svelte';
 
-	let listPrivacyPolicy = [
+	let listPrivacyPolicy = $derived([
 		{
-			title: '1. Збір інформації',
-			description:
-				'Ми не збираємо жодних особистих даних від користувачів нашого сайту. Ви можете відвідувати та використовувати наш сайт без необхідності надання будь-якої інформації про себе.'
+			title: $t('footer.lis.policy.title.one'),
+			description: $t('footer.lis.policy.description.one')
 		},
 		{
-			title: '2. Використання інформації',
-			description:
-				'Оскільки ми не збираємо особисті дані, ми не використовуємо жодної інформації для комерційних чи інших цілей. Наш сайт не аналізує поведінку користувачів і не здійснює відстеження.'
+			title: $t('footer.lis.policy.title.two'),
+			description: $t('footer.lis.policy.description.two')
 		},
 		{
-			title: '3. Файли cookie',
-			description:
-				'Наш сайт може використовувати файли cookie для покращення вашого користувацького досвіду. Ці файли cookie не зберігають особисті дані і можуть бути вимкнені у налаштуваннях вашого браузера.'
+			title: $t('footer.lis.policy.title.three'),
+			description: $t('footer.lis.policy.description.three')
 		},
 		{
-			title: '4. Обмін даними',
-			description:
-				'Оскільки ми не збираємо особисті дані, ми не передаємо жодну інформацію третім особам.'
+			title: $t('footer.lis.policy.title.four'),
+			description: $t('footer.lis.policy.description.four')
 		},
 		{
-			title: '5. Безпека',
-			description:
-				'Ми застосовуємо всі можливі заходи для забезпечення безпеки на нашому сайті. Однак, оскільки ми не збираємо дані користувачів, вам не потрібно турбуватися про безпеку особистої інформації.'
+			title: $t('footer.lis.policy.title.five'),
+			description: $t('footer.lis.policy.description.five')
 		},
 		{
-			title: '6. Зміни до політики конфіденційності',
-			description:
-				'Ми можемо час від часу оновлювати цю політику конфіденційності. Усі зміни будуть відображені на цій сторінці.'
+			title: $t('footer.lis.policy.title.six'),
+			description: $t('footer.lis.policy.description.six')
 		},
 		{
-			title: '7. Контактна інформація',
-			description:
-				'Якщо у вас виникли питання щодо цієї політики конфіденційності, ви можете зв’язатися з нами через контактну інформацію, розміщену на нашому сайті.'
+			title: $t('footer.lis.policy.title.seven'),
+			description: $t('footer.lis.policy.description.seven')
 		}
-	];
+	]);
 
+	let dialog: HTMLDialogElement;
 	let showModal = $state(false);
+
+	$effect(() => {
+		if (showModal) {
+			dialog?.showModal();
+			document.body.classList.add('overflow-hidden');
+		} else {
+			dialog?.close();
+			document.body.classList.remove('overflow-hidden');
+		}
+	});
 </script>
 
-<footer class="container overflow-visible py-10">
+<footer class="container py-10">
 	<div class="flex items-end justify-between max-md:flex-col max-md:items-center max-md:gap-1">
-		<button type="button" class="cursor-pointer max-md:hidden" onclick={() => (showModal = true)}
-			>Політика конфіденційності</button
+		<button
+			type="button"
+			class="cursor-pointer
+			hover:underline active:underline max-md:hidden"
+			onclick={() => (showModal = true)}
+			aria-label={$t('footer.lis.policy.title')}
+			title={$t('footer.lis.policy.title')}
 		>
+			{$t('footer.lis.policy.title')}
+		</button>
 
-		<Modal bind:showModal>
-			{#snippet header()}
-				<h1 class="text-center text-5xl max-md:text-3xl">Політика конфіденційності</h1>
-			{/snippet}
+		<dialog
+			class="bg-modal scrollbar-width relative m-auto bg-transparent text-white"
+			bind:this={dialog}
+			onclose={() => (showModal = false)}
+			onclick={(e) => {
+				if (e.target === dialog) dialog.close();
+			}}
+		>
+			<h1 class="text-center text-5xl max-md:text-3xl">
+				{$t('footer.lis.policy.title')}
+			</h1>
+			<!-- svelte-ignore a11y_autofocus -->
+			<button
+				class="cursor-pointer px-3 py-1 text-4xl"
+				aria-label={$t('close')}
+				title={$t('close')}
+				autofocus
+				onclick={() => dialog.close()}
+			>
+				&times
+			</button>
 
-			<p class="text-2xl max-md:text-lg">
-				Ця політика конфіденційності визначає, як наш сайт – «Apollo 15» обробляє особисту
-				інформацію відвідувачів. Ми поважаємо вашу приватність та зобов'язуємося забезпечувати
-				захист вашої інформації.
-			</p>
+			<div
+				class="scrollbar-width flex max-h-[500px] max-w-[900px] flex-col gap-10 overflow-y-scroll px-10 py-5 text-center max-md:px-5"
+			>
+				<p class="text-2xl max-md:text-lg">
+					{$t('footer.lis.policy.subtitle')}
+				</p>
 
-			<ul class="flex flex-col gap-10">
-				{#each listPrivacyPolicy as { title, description }}
-					<li>
-						<p class="text-3xl underline underline-offset-5 max-md:text-xl">
-							{title}
-						</p>
+				<ul class="flex flex-col gap-10">
+					{#each listPrivacyPolicy as { title, description }}
+						<li>
+							<p class="text-3xl underline underline-offset-5 max-md:text-xl">
+								{title}
+							</p>
 
-						<span class="text-2xl max-md:text-base">
-							{description}
-						</span>
-					</li>
-				{/each}
-			</ul>
-		</Modal>
+							<span class="text-2xl max-md:text-base">
+								{description}
+							</span>
+						</li>
+					{/each}
+				</ul>
+			</div>
+		</dialog>
 
 		<Logo className={'max-w-[146px]'} />
 
 		<button
 			type="button"
-			class="hidden cursor-pointer max-md:block"
-			onclick={() => (showModal = true)}>Політика конфіденційності</button
+			class="hidden cursor-pointer hover:underline active:underline max-md:block"
+			onclick={() => (showModal = true)}
+			aria-label={$t('footer.lis.policy.title')}
+			title={$t('footer.lis.policy.title')}
 		>
-		<span>© 2025 UA. Всі права захищені</span>
+			{$t('footer.lis.policy.title')}
+		</button>
+
+		<span>© 2025 UA. {$t('footer.all.ring.reserved')}</span>
 	</div>
 </footer>

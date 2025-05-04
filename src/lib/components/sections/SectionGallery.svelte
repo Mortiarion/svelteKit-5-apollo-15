@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { t } from '$lib/i18n';
+
 	type TSlideImg = {
 		src: string;
 		alt: string;
@@ -60,11 +62,11 @@
 	}
 </script>
 
-<section class="container pb-25">
+<section id="gallery" class="container pb-25">
 	<h4
 		class="main-title bg-gradient-to-b from-teal-500 via-orange-500 to-indigo-500 bg-clip-text text-transparent"
 	>
-		Фотогалерея
+		{$t('section.gallery.title')}
 	</h4>
 
 	<div class="slider-wrapper">

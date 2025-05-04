@@ -11,9 +11,9 @@
 	const navItems = [
 		// { href: '/', key: 'home', title: 'Головна сторінка' },
 		// { href: '/#about-us', key: 'about', title: 'Про нас' },
-		{ href: '/#menu', key: 'menu', title: 'Меню' },
-		{ href: '/#galery', key: 'gallery', title: 'Галерея' },
-		{ href: '/#faq', key: 'faq', title: 'FAQ' },
+		{ href: '/#menu', key: 'menu', title: $t('nav.menu') },
+		{ href: '/#gallery', key: 'gallery', title: $t('nav.gallery') },
+		{ href: '/#faq', key: 'faq', title: $t('nav.faq') }
 		// { href: '/#contacts', key: 'contact', title: 'Контакти' }
 	];
 
@@ -70,7 +70,7 @@
 		transition:fly={{ y: -10 }}
 		class="absolute top-32 text-xl font-semibold md:static md:flex md:gap-3"
 	>
-		{#each navItems as { href, key, title} }
+		{#each navItems as { href, key, title }}
 			<li class="hover:underline focus-visible:underline active:underline">
 				<a {href} {title} aria-label={title}>
 					{$t(`nav.${key}`)}
