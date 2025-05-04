@@ -32,7 +32,7 @@
 	<h4
 		class="main-title bg-gradient-to-b from-cyan-900 via-indigo-500 to-amber-100 bg-clip-text text-transparent"
 	>
-		ЧАСТІ ПИТАННЯ
+		{$t('section.faq.title')}
 	</h4>
 
 	<ul class="flex flex-col gap-6">

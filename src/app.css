@@ -25,7 +25,7 @@
 
 @layer utilities {
 	.container {
-		@apply mx-auto px-5 ;
+		@apply mx-auto px-5;
 	}
 
 	.color-2e2e2e {
@@ -59,13 +59,13 @@
 	}
 
 	.social-button {
-		@apply relative h-[50px] w-[200px]  text-center text-[18px] leading-[48px] tracking-[0.1em] uppercase no-underline transition duration-500;
+		@apply relative h-[50px] w-[200px] text-center text-[18px] leading-[48px] tracking-[0.1em] uppercase no-underline transition duration-500;
 		-webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
 		will-change: transform, opacity;
 	}
 
 	.social-button span {
-		@apply absolute inset-0 m-[1px] flex items-center justify-center  text-center text-white/60 transition duration-500;
+		@apply absolute inset-0 m-[1px] flex items-center justify-center text-center text-white/60 transition duration-500;
 	}
 
 	.social-button:hover span {
@@ -74,7 +74,7 @@
 
 	.social-button span::before {
 		content: '';
-		@apply absolute top-0 left-0 z-10 h-1/2 w-full ;
+		@apply absolute top-0 left-0 z-10 h-1/2 w-full;
 	}
 
 	.social-button::before {
@@ -147,5 +147,31 @@
 		.social-button i {
 			@apply mr-1.5 text-[16px];
 		}
+	}
+
+	h4,
+	h5,
+	h1 {
+		animation: glow 2s ease-in-out infinite;
+	}
+
+	@keyframes glow {
+		0%,
+		100% {
+			filter: drop-shadow(0 0 10px #807457);
+		}
+		50% {
+			filter: drop-shadow(0 0 20px #807457);
+		}
+	}
+
+	p,
+	span,
+	a,
+	button {
+		text-shadow:
+			1px 1px 0px rgba(255, 255, 255, 0.3),
+			2px 2px 4px rgba(0, 0, 0, 0.4);
+		filter: drop-shadow(0 0 3px rgba(107, 114, 128, 1));
 	}
 }

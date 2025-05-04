@@ -61,6 +61,7 @@ export default {
 
 	'section.gallery.title': 'Gallery',
 
+	'section.faq.title': 'Frequently Asked Questions',
 	'section.faq.list.one.question': 'Can I order a hookah, and what is the cost?',
 	'section.faq.list.one.respond':
 		'Yes, you can. Regular tobaccos, suitable for mild and medium strength, cost 300 UAH. The premium line, suitable for medium and strong, costs 350 UAH.',

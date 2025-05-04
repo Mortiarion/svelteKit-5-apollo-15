@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
+	import { goto } from '$app/navigation';
 
 	import { t } from '$lib/i18n';
 
@@ -20,6 +21,17 @@
 	function toggleDropdownBurger() {
 		isBurger = !isBurger;
 	}
+
+	function smoothScrollToSection(event: Event, href: string) {
+		event.preventDefault();
+		
+		const sectionId = href.replace('/#', '');
+		const section = document.getElementById(sectionId);
+
+		if (section) {
+			section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		};
+	};
 
 	onMount(() => {
 		const checkViewport = () => {
@@ -72,7 +84,7 @@
 	>
 		{#each navItems as { href, key, title }}
 			<li class="hover:underline focus-visible:underline active:underline">
-				<a {href} {title} aria-label={title}>
+				<a {href} {title} aria-label={title} onclick={(event) => smoothScrollToSection(event, href)}>
 					{$t(`nav.${key}`)}
 				</a>
 			</li>

@@ -60,6 +60,7 @@ export default {
 
 	'section.gallery.title': 'Галерея',
 
+	'section.faq.title': 'Часто задаваемые вопросы',
 	'section.faq.list.one.question': 'Можно ли у вас заказать кальян и какая стоимость?',
 	'section.faq.list.one.respond':
 		'Да, можно. Обычные табаки, подходящие для слабых и средних, – 300 грн. Премиум-линейка, подходящая для средних и крепких, – 350 грн.',
@@ -81,7 +82,7 @@ export default {
 	'section.work.location': 'Местоположение:',
 	'section.work.address': 'Радужный массив 15/2',
 
-	'section.hookah.title': 'Кальян',
+	'section.hookah.menu.title': 'Кальян',
 	'section.hookah.menu.list.one.text': 'Использование не крепких сортов табака',
 	'section.hookah.menu.list.two.text': 'Использование крепких сортов табака',
 	'section.hookah.menu.list.three.text': 'Авторский микс для путешествия в глубины космоса',

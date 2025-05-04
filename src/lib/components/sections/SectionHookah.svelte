@@ -46,11 +46,11 @@
 					? 'col-span-2'
 					: ''}"
 			>
-				<h4 class="text-center text-4xl max-md:text-3xl max-sm:text-2xl">{hookah.heading}</h4>
+				<h5 class="text-center text-4xl max-md:text-3xl max-sm:text-2xl">{hookah.heading}</h5>
 
 				<hr class="min-w-72 border-dashed" />
 
-				<span class="text-center text-xl text-white max-sm:text-base">{hookah.text}</span>
+				<span class="text-center text-xl max-sm:text-base">{hookah.text}</span>
 
 				<p class="text-4xl max-md:text-3xl max-sm:text-2xl">{hookah.paragraph}</p>
 			</div>
