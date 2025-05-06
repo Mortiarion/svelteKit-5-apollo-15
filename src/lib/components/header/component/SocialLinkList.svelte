@@ -6,6 +6,8 @@
 	import TikTokIcon from '$lib/icons/TikTokIcon.svelte';
 	import ViberIcon from '$lib/icons/ViberIcon.svelte';
 
+	let {className = '' } = $props();
+
 	type SvelteComponent = new (...args: any[]) => any;
 
 	interface ISocialLink {
@@ -43,11 +45,11 @@
 	]);
 </script>
 
-<div class="flex flex-col items-end justify-center gap-10">
+<div class="{className} flex flex-col items-end justify-center gap-10">
 	{#each socialLinks as { href, icon: Icon, label, target } (href)}
 		<a {href} {target} class="social-button" aria-label={label} title={label}>
-			<span>
-				<i>
+			<span class="flex ">
+				<i aria-hidden="true">
 					<Icon />
 				</i>
 

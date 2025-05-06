@@ -5,34 +5,34 @@
 		{
 			heading: 'ЗЕМЛЯ LITE',
 			text: $t('section.hookah.menu.list.one.text'),
-			paragraph: '300₴'
+			paragraph: '330₴'
 		},
 		{
 			heading: 'САТУРН PREMIUM',
 			text: $t('section.hookah.menu.list.two.text'),
-			paragraph: '350₴'
+			paragraph: '380₴'
 		},
 		{
 			heading: 'ЗАГАДКОВИЙ КОСМОС',
 			text: $t('section.hookah.menu.list.three.text'),
-			paragraph: '390₴'
+			paragraph: '420₴'
 		},
 		{
 			heading: 'НЕВАГОМІСТЬ',
 			text: $t('section.hookah.menu.list.four.text'),
-			paragraph: '390₴'
+			paragraph: '420₴'
 		},
 		{
 			heading: 'АПОЛЛОН 15',
 			text: $t('section.hookah.menu.list.five.text'),
-			paragraph: '390₴'
+			paragraph: '420₴'
 		}
 	]);
 </script>
 
 <section class="relative container pb-25">
 	<h4
-		class="main-title bg-gradient-to-br from-blue-600 via-lime-400 to-neutral-950 bg-clip-text text-transparent"
+		class="main-title bg-gradient-to-tl from-slate-800 via-violet-500 to-zinc-400 bg-clip-text text-transparent"
 	>
 		{$t('section.hookah.menu.title')}
 	</h4>

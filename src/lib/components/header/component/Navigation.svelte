@@ -5,7 +5,7 @@
 </script>
 
 <div class="flex justify-between md:items-center">
-	<Logo className={'max-w-[98px]'} />
+	<Logo className={'max-w-[128px]'} />
 
 	<NavigationListAndBurger />
 
