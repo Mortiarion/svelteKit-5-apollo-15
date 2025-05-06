@@ -14,7 +14,7 @@
 			<span class="text-2xl max-sm:text-lg">
 				{$t('section.work.time')}
 			</span>
-			<a class="text-2xl max-sm:text-lg" href="tel:+380936551515">+380(93)-65-51-515</a>
+			<a class="text-2xl max-sm:text-lg" href="tel:+380936551515">+380(93)-655-1515</a>
 		</div>
 
 		<div class="flex flex-col items-center gap-2.5">
