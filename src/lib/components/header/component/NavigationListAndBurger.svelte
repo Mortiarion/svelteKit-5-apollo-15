@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
-	import { goto } from '$app/navigation';
 
 	import { t } from '$lib/i18n';
 
@@ -80,7 +79,7 @@
 {#if isBurger}
 	<ul
 		transition:fly={{ y: -10 }}
-		class="absolute top-32 text-xl font-semibold md:static md:flex md:gap-3"
+		class="absolute top-52 text-xl font-semibold md:static md:flex md:gap-3"
 	>
 		{#each navItems as { href, key, title }}
 			<li class="hover:underline focus-visible:underline active:underline">
