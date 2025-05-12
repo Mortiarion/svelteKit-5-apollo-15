@@ -1,6 +1,9 @@
 export default {
 	home: 'Главная',
 	close: 'Закрыть',
+	map: 'Перейти на карту',
+	prev: 'Предыдущая',
+	next: 'Следующая',
 
 	'nav.about': 'О нас',
 	'nav.menu': 'Меню',
@@ -81,6 +84,7 @@ export default {
 	'section.work.time': 'Пн - Вс: 14:00 - 23:00',
 	'section.work.location': 'Местоположение:',
 	'section.work.address': 'Радужный массив 15/2',
+	'section.work.market': 'на крыше супермаркета',
 
 	'section.hookah.menu.title': 'Кальян',
 	'section.hookah.menu.list.one.text': 'Использование не крепких сортов табака',

@@ -1,6 +1,9 @@
 export default {
 	home: 'Home',
 	close: 'Close',
+	map: 'Go to map',
+	prev: 'Previous',
+	next: 'Next',
 
 	'nav.about': 'About',
 	'nav.menu': 'Menu',
@@ -82,6 +85,7 @@ export default {
 	'section.work.time': 'Mon - Sun: 14:00 - 23:00',
 	'section.work.location': 'Location:',
 	'section.work.address': 'Rayduzhnyi Massif 15/2',
+	'section.work.market': 'on the roof of the supermarket',
 
 	'section.hookah.menu.title': 'Hookah',
 	'section.hookah.menu.list.one.text': 'Use of mild tobacco varieties',

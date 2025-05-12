@@ -61,7 +61,7 @@
 		</button>
 
 		<dialog
-			class="bg-modal scrollbar-width relative m-auto bg-transparent text-white"
+			class="bg-modal scrollbar-width relative m-auto pr-2 bg-transparent text-white"
 			bind:this={dialog}
 			onclose={() => (showModal = false)}
 			onclick={(e) => {
@@ -71,12 +71,11 @@
 			<h1 class="text-center text-5xl max-md:text-3xl">
 				{$t('footer.lis.policy.title')}
 			</h1>
-			<!-- svelte-ignore a11y_autofocus -->
+
 			<button
 				class="cursor-pointer px-3 py-1 text-4xl"
 				aria-label={$t('close')}
 				title={$t('close')}
-				autofocus
 				onclick={() => dialog.close()}
 			>
 				&times
