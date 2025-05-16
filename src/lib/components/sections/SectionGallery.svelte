@@ -1,5 +1,9 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
+	import ModalGallery from '../ModalGallery.svelte';
+
+	let isShownModalGallery: boolean = $state<boolean>(false);
+	let currentImageIndex: number = $state<number>(0);
 
 	type TSlideImg = {
 		src: string;
@@ -25,116 +29,71 @@
 		]
 	];
 
-	let sliderContainer: HTMLDivElement;
-	let isDragging = $state(false);
-	let startClientX: number;
-	let initialScrollLeft: number;
-	let isShowModal = $state(false);
-	let currentImageIndex = $state(0);
 	const allImages = slideImages.flat();
 
-	let dragThreshold = 5;
+	let sliderContainer: HTMLDivElement;
+	let isDragging: boolean = $state<boolean>(false);
+	let startClientX: number;
+	let initialScrollLeft: number;
 	let lastClientX: number;
-
-	function openModal(index: number) {
-		if (!isDragging && Math.abs(lastClientX - startClientX) < dragThreshold) {
-			modalGallery?.showModal();
-			currentImageIndex = index;
-		}
-	}
-
-	function nextImage() {
-		const totalImages = allImages.length;
-		currentImageIndex = (currentImageIndex + 1) % totalImages;
-	}
-
-	function prevImage() {
-		const totalImages = allImages.length;
-		currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
-	}
+	let dragThreshold: number = 5;
 
 	function handleWheel(event: WheelEvent) {
-		if (sliderContainer && !isShowModal) {
+		if (sliderContainer && !isShownModalGallery) {
 			event.preventDefault();
 			sliderContainer.scrollLeft += event.deltaY;
-		}
-		if (isShowModal) {
-			event.preventDefault();
-			if (event.deltaY > 0) nextImage();
-			else prevImage();
-		}
-	}
+		};
+	};
 
 	function handleMouseDown(event: MouseEvent) {
-		if (event.button !== 0 || !sliderContainer) return;
-		event.preventDefault();
-		isDragging = true;
-		startClientX = event.clientX;
-		lastClientX = startClientX;
-		initialScrollLeft = sliderContainer.scrollLeft;
+        if (event.button !== 0 || !sliderContainer) return;
+        event.preventDefault();
+        isDragging = true;
+        startClientX = event.clientX;
+        lastClientX = startClientX;
+        initialScrollLeft = sliderContainer.scrollLeft;
 
-		const handleMouseMove = (moveEvent: MouseEvent) => {
-			if (!isDragging) return;
-			const delta = moveEvent.clientX - startClientX;
-			sliderContainer.scrollLeft = initialScrollLeft - delta;
-			lastClientX = moveEvent.clientX;
-		};
+        const handleMouseMove = (moveEvent: MouseEvent) => {
+            if (!isDragging) return;
+            const delta = moveEvent.clientX - startClientX;
+            sliderContainer.scrollLeft = initialScrollLeft - delta;
+            lastClientX = moveEvent.clientX;
+        };
 
-		const handleMouseUp = () => {
-			isDragging = false;
-			document.removeEventListener('mousemove', handleMouseMove);
-			document.removeEventListener('mouseup', handleMouseUp);
-		};
+        const handleMouseUp = () => {
+            isDragging = false;
+            if (Math.abs(lastClientX - startClientX) < dragThreshold) {
+                const clickedGroupIndex = Math.floor(sliderContainer.scrollLeft / sliderContainer.offsetWidth);
+                const clickedIndex = Math.round((sliderContainer.scrollLeft % sliderContainer.offsetWidth) / (sliderContainer.offsetWidth / slideImages[clickedGroupIndex].length));
+                const imageIndex = clickedGroupIndex * slideImages[0].length + clickedIndex;
+                if (imageIndex >= 0 && imageIndex < allImages.length) {
+                    currentImageIndex = imageIndex;
+                    isShownModalGallery = true;
+                }
+            }
+            document.removeEventListener('mousemove', handleMouseMove);
+            document.removeEventListener('mouseup', handleMouseUp);
+        };
 
-		document.addEventListener('mousemove', handleMouseMove, { passive: true });
-		document.addEventListener('mouseup', handleMouseUp, { once: true });
-	}
+        document.addEventListener('mousemove', handleMouseMove, { passive: true });
+        document.addEventListener('mouseup', handleMouseUp, { once: true });
+    }
 
-	function handleTouchStart(event: TouchEvent) {
-		if (!sliderContainer) return;
-		startClientX = event.touches[0].clientX;
-		initialScrollLeft = sliderContainer.scrollLeft;
-	}
+    function handleTouchStart(event: TouchEvent) {
+        if (!sliderContainer) return;
+        startClientX = event.touches[0].clientX;
+        initialScrollLeft = sliderContainer.scrollLeft;
+    }
 
-	function handleTouchMove(event: TouchEvent) {
-		if (!sliderContainer || !startClientX) return;
-		const delta = event.touches[0].clientX - startClientX;
-		sliderContainer.scrollLeft = initialScrollLeft - delta;
-	}
+    function handleTouchMove(event: TouchEvent) {
+        if (!sliderContainer || !startClientX) return;
+        const delta = event.touches[0].clientX - startClientX;
+        sliderContainer.scrollLeft = initialScrollLeft - delta;
+    }
 
-	function handleTouchEnd() {
-		startClientX = 0;
-	}
-
-	// Свайп у модальному вікні
-	let touchStartX: number;
-	function handleModalTouchStart(event: TouchEvent) {
-		touchStartX = event.touches[0].clientX;
-	}
-
-	function handleModalTouchMove(event: TouchEvent) {
-		if (!touchStartX) return;
-		const touchEndX = event.touches[0].clientX;
-		const delta = touchEndX - touchStartX;
-		if (delta > 50) prevImage();
-		else if (delta < -50) nextImage();
-		touchStartX = touchEndX;
-	}
-
-	function handleModalTouchEnd() {
-		touchStartX = 0;
-	}
-
-	let modalGallery = $state<HTMLDialogElement | undefined>();
-
-	$effect(() => {
-		if (isShowModal && modalGallery) {
-			modalGallery.showModal();
-			document.body.classList.add('overflow-hidden');
-		} else {
-			document.body.classList.remove('overflow-hidden');
-		}
-	});
+    function handleTouchEnd() {
+        startClientX = 0;
+    }
 </script>
 
 <section id="gallery" class="container pb-25">
@@ -155,15 +114,14 @@
 			ontouchmove={handleTouchMove}
 			ontouchend={handleTouchEnd}
 		>
-			{#each slideImages as slideGroup, groupIndex}
+			{#each slideImages as slideGroup}
 				<div class="slide grid grid-cols-2 grid-rows-2 gap-2.5">
-					{#each slideGroup as { src, alt, className }, index}
-						<!-- svelte-ignore a11y_click_events_have_key_events -->
+					{#each slideGroup as { src, alt, className }}
 						<picture
 							class={className}
-							onclick={() => openModal(groupIndex * slideGroup.length + index)}
 						>
 							<source srcset={`/slider-gallery/${src}.webp`} type="image/webp" />
+
 							<img src={`/slider-gallery/${src}.jpg`} {alt} />
 						</picture>
 					{/each}
@@ -172,50 +130,12 @@
 		</div>
 	</div>
 
-	<dialog
-		bind:this={modalGallery}
-		onclose={() => (isShowModal = false)}
-		onclick={(e) => e.target === modalGallery && modalGallery.close()}
-		class="m-auto max-h-full max-w-full backdrop-opacity-90 backdrop:backdrop-blur-lg"
-		onwheel={handleWheel}
-		ontouchstart={handleModalTouchStart}
-		ontouchmove={handleModalTouchMove}
-		ontouchend={handleModalTouchEnd}
-	>
-		<div class="relative text-white">
-			<button
-				type="button"
-				class="absolute top-2.5 right-2.5 cursor-pointer px-2 text-3xl"
-				onclick={() => modalGallery?.close()}
-				title={$t('nav.close')}
-				aria-label={$t('nav.close')}
-			>
-				×
-			</button>
+	<ModalGallery 
+		bind:isShownModalGallery
+		{currentImageIndex}
+		{allImages}
+	/>
 
-			<button
-				type="button"
-				class="chevron left absolute top-1/2 left-5 cursor-pointer p-2"
-				aria-label={$t('prev')}
-				title={$t('prev')}
-				onclick={prevImage}
-			></button>
-
-			<img
-				src={`/slider-gallery/${allImages[currentImageIndex].src}.jpg`}
-				alt={allImages[currentImageIndex].alt}
-				class="max-h-[90dvh] max-w-[90dvw]"
-			/>
-
-			<button
-				type="button"
-				class="chevron right absolute top-1/2 right-5 cursor-pointer p-2"
-				aria-label={$t('next')}
-				title={$t('next')}
-				onclick={nextImage}
-			></button>
-		</div>
-	</dialog>
 </section>
 
 <style lang="postcss">
@@ -246,25 +166,5 @@
 				width: 496px;
 			}
 		}
-	}
-
-	.chevron {
-		width: 10px;
-		height: 10px;
-		border-width: 0 3px 3px 0;
-		padding: 8px;
-
-		&.right {
-			transform: rotate(-45deg);
-		}
-
-		&.left {
-			transform: rotate(135deg);
-		}
-	}
-
-	:global(body.overflow-hidden) {
-		overflow: hidden;
-		touch-action: none;
 	}
 </style>
