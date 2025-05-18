@@ -137,7 +137,7 @@
 						>
 							<source srcset={`/slider-gallery/${src}.webp`} type="image/webp" />
 
-							<img class="w-full h-full" src={`/slider-gallery/${src}.jpg`} {alt} />
+							<img class="w-full h-full" src={`/slider-gallery/${src}.jpg`} {alt} loading="lazy" />
 						</picture>
 					{/each}
 				</div>

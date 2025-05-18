@@ -87,11 +87,19 @@
             onclick={prevImage}
         ></button>
 
-        <img
-            src={`/slider-gallery/${allImages[currentImageIndex].src}.jpg`}
-            alt={allImages[currentImageIndex].alt}
-            class="max-h-[90dvh] max-w-[90dvw]"
-        />
+        <picture>
+            <source 
+                srcset={`/slider-gallery/${allImages[currentImageIndex].src}.webp`} 
+                type="image/webp"
+            >
+
+            <img
+                src={`/slider-gallery/${allImages[currentImageIndex].src}.jpg`}
+                alt={allImages[currentImageIndex].alt}
+                class="max-h-[90dvh] max-w-[90dvw]"
+                loading="lazy"
+            />
+        </picture>
 
         <button
             type="button"

@@ -5,7 +5,7 @@
 </script>
 
 <section id="contacts" class="container pb-25">
-	<div class="mb-10 flex justify-between gap-5 max-lg:flex-col max-lg:gap-10">
+	<div class="mb-30 flex justify-between gap-5 max-lg:flex-col max-lg:gap-10">
 		<div class="flex flex-col items-center gap-2.5">
 			<p class="font-audiowide border-b text-4xl max-sm:text-2xl">
 				{$t('section.work.title')}
