@@ -41,13 +41,16 @@
 	function handleWheel(event: WheelEvent) {
 		if (sliderContainer && !isShownModalGallery) {
 			event.preventDefault();
+
 			sliderContainer.scrollLeft += event.deltaY;
 		};
 	};
 
 	function handleMouseDown(event: MouseEvent) {
         if (event.button !== 0 || !sliderContainer) return;
+
         event.preventDefault();
+
         isDragging = true;
         startClientX = event.clientX;
         lastClientX = startClientX;
@@ -55,39 +58,51 @@
 
         const handleMouseMove = (moveEvent: MouseEvent) => {
             if (!isDragging) return;
+
             const delta = moveEvent.clientX - startClientX;
+
             sliderContainer.scrollLeft = initialScrollLeft - delta;
             lastClientX = moveEvent.clientX;
         };
 
         const handleMouseUp = () => {
             isDragging = false;
+
             if (Math.abs(lastClientX - startClientX) < dragThreshold) {
                 const clickedGroupIndex = Math.floor(sliderContainer.scrollLeft / sliderContainer.offsetWidth);
+
                 const clickedIndex = Math.round((sliderContainer.scrollLeft % sliderContainer.offsetWidth) / (sliderContainer.offsetWidth / slideImages[clickedGroupIndex].length));
+
                 const imageIndex = clickedGroupIndex * slideImages[0].length + clickedIndex;
+
                 if (imageIndex >= 0 && imageIndex < allImages.length) {
                     currentImageIndex = imageIndex;
+
                     isShownModalGallery = true;
-                }
-            }
+                };
+            };
+
             document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mouseup', handleMouseUp);
         };
 
         document.addEventListener('mousemove', handleMouseMove, { passive: true });
         document.addEventListener('mouseup', handleMouseUp, { once: true });
-    }
+    };
 
     function handleTouchStart(event: TouchEvent) {
         if (!sliderContainer) return;
+
         startClientX = event.touches[0].clientX;
+
         initialScrollLeft = sliderContainer.scrollLeft;
     }
 
     function handleTouchMove(event: TouchEvent) {
         if (!sliderContainer || !startClientX) return;
+
         const delta = event.touches[0].clientX - startClientX;
+
         sliderContainer.scrollLeft = initialScrollLeft - delta;
     }
 
@@ -103,10 +118,10 @@
 		{$t('section.gallery.title')}
 	</h4>
 
-	<div class="slider-wrapper">
+	<div class="slider-wrapper cursor-grab">
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<div
-			class="slide-container grid max-h-[496px] grid-flow-col grid-rows-1 gap-2.5 max-lg:max-h-[396px]"
+			class="slide-container overflow-y-hidden overflow-x-scroll scrollbar-width grid max-h-[496px] grid-flow-col grid-rows-1 gap-2.5 max-lg:max-h-[396px]"
 			bind:this={sliderContainer}
 			onwheel={handleWheel}
 			onmousedown={handleMouseDown}
@@ -122,7 +137,7 @@
 						>
 							<source srcset={`/slider-gallery/${src}.webp`} type="image/webp" />
 
-							<img src={`/slider-gallery/${src}.jpg`} {alt} />
+							<img class="w-full h-full" src={`/slider-gallery/${src}.jpg`} {alt} />
 						</picture>
 					{/each}
 				</div>
@@ -139,21 +154,8 @@
 </section>
 
 <style lang="postcss">
-	picture {
-		> img {
-			width: 100%;
-			height: 100%;
-		}
-	}
-
 	.slider-wrapper {
-		cursor: grab;
-
 		.slide-container {
-			overflow-x: scroll;
-			overflow-y: hidden;
-			scrollbar-width: none;
-
 			&:active {
 				cursor: grabbing;
 			}
