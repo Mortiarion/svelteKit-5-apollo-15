@@ -1,7 +1,7 @@
 import { derived, writable } from 'svelte/store';
 import { ELocales, translations } from '$lib/translations/languages';
 
-export const locale = writable<ELocales>(ELocales.UK);
+export const locale = writable<ELocales>(ELocales.UKR);
 export const locales: string[] = Object.keys(translations);
 
 type Translations = {

@@ -16,7 +16,7 @@ export default {
 	'lang.switch': 'Change Language',
 	'lang.en': 'English',
 	'lang.ru': 'Russian',
-	'lang.uk': 'Ukrainian',
+	'lang.ukr': 'Ukrainian',
 
 	'social.telephone': 'Phone',
 	'social.telegram': 'Telegram',
@@ -67,7 +67,7 @@ export default {
 	'section.faq.title': 'Frequently Asked Questions',
 	'section.faq.list.one.question': 'Can I order a hookah, and what is the cost?',
 	'section.faq.list.one.respond':
-		'Yes, you can. Regular tobaccos, suitable for mild and medium strength, cost 300 UAH. The premium line, suitable for medium and strong, costs 350 UAH.',
+		'Yes, you can. Regular tobaccos, suitable for mild and medium strength, cost 330 UAH. The premium line, suitable for medium and strong, costs 380 UAH.',
 	'section.faq.list.two.question': 'Is it possible to order food?',
 	'section.faq.list.two.respond':
 		'Yes, it is possible. You can order delicious sweet and savory snacks, and we can also arrange delivery directly to our venue.',

@@ -23,9 +23,24 @@
 			{ src: 'galery_six', alt: 'Gallery 6', className: 'col-start-2' }
 		],
 		[
-			{ src: 'galery_one', alt: 'Gallery 7' },
-			{ src: 'galery_two', alt: 'Gallery 8' },
-			{ src: 'galery_three', alt: 'Gallery 9', className: 'col-span-2' }
+			{ src: 'galery_seven', alt: 'Gallery 7', className: 'col-span-2' },
+			{ src: 'galery_eight', alt: 'Gallery 8' },
+			{ src: 'galery_nine', alt: 'Gallery 9', className: 'col-start-2' }
+		],
+		[
+			{ src: 'galery_ten', alt: 'Gallery 10' },
+			{ src: 'galery_eleven', alt: 'Gallery 11' },
+			{ src: 'galery_twelve', alt: 'Gallery 12', className: 'col-span-2' }
+		],
+		[
+			{ src: 'galery_thersteen', alt: 'Gallery 13' },
+			{ src: 'galery_fourteen', alt: 'Gallery 14', className: 'row-span-2' },
+			{ src: 'galery_fiveteen', alt: 'Gallery 15' }
+		],
+		[
+			{ src: 'galery_sixteen', alt: 'Gallery 16' },
+			{ src: 'galery_seventeen', alt: 'Gallery 17' },
+			{ src: 'galery_eightteen', alt: 'Gallery 18', className: 'col-span-2' }
 		]
 	];
 
