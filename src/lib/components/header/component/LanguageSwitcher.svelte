@@ -46,7 +46,7 @@
 	<button
 		bind:this={languageMenu}
 		onclick={togglelanguageMenu}
-		class="cursor-pointer text-2xl w-8 underline transition-all max-md:absolute max-md:right-10 max-md:bottom-1 {isOpen
+		class="cursor-pointer text-2xl w-14 underline transition-all max-md:absolute max-md:right-10 max-md:bottom-1 {isOpen
 			? 'invisible opacity-0'
 			: 'visible opacity-100'}"
 		aria-label={$t('lang.switch')}
